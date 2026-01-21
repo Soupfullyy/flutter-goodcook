@@ -1,30 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_goodcook/screens/signup.dart';
 import 'package:flutter_goodcook/widgets/custom_textformfield.dart';
 import 'package:flutter_goodcook/widgets/custom_scaffold.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LoginState extends State<Login> {
+class _SignUpState extends State<SignUp> {
   final emailController = TextEditingController();
   final pwdController = TextEditingController();
-  @override
-  void initState() {
-    super.initState();
-    emailController.addListener(() {});
-    pwdController.addListener(() {});
-  }
+  final confPwdController = TextEditingController();
 
-  @override
+ @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: 'Login',
+      title: 'Sign Up',
       child: Padding(
           padding: const EdgeInsets.all(24),
           child: Column(
@@ -36,25 +30,32 @@ class _LoginState extends State<Login> {
                 hint: 'Enter your Email',
               ),
               CustomTextFormField(
-                  controller: pwdController,
-                  label: 'Password',
-                  hint: 'Enter your Password'),
+                controller: pwdController,
+                label: 'Password',
+                hint: 'Enter your Password'
+              ),
+              CustomTextFormField(
+                controller: confPwdController,
+                label: 'Confirm Password',
+                hint: 'Enter your Password'
+              ),
               FilledButton(
                 onPressed: () => (),
                 style: FilledButton.styleFrom(
                   backgroundColor: Colors.black,
+      
                 ),
                 child: Text(
-                  'Login',
+                  'Sign Up',
                   style: GoogleFonts.inter(
                     fontSize: 16,
                   ),
                 ),
               ),
               TextButton(
-                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: ((context) => SignUp()))),
+                onPressed: () => Navigator.pop(context),
                 child: Text(
-                  'New to GoodCook? Sign up',
+                  'Have an existing account? Login',
                   textAlign: TextAlign.left,
                   style: GoogleFonts.inter(
                     decoration: TextDecoration.underline,
