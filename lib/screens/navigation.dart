@@ -97,7 +97,7 @@ class _NavigationState extends State<Navigation> {
     final List<Widget> _appBars = <Widget>[
       AppBar(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          titleSpacing: 24,
+          titleSpacing: 16,
           // to center title vertical, make height same as prefered size's
           toolbarHeight: 64.0,
           elevation: 0,
@@ -105,7 +105,8 @@ class _NavigationState extends State<Navigation> {
             height: 48,
             child: TextField(
               decoration: InputDecoration(
-                border: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+                fillColor: Colors.grey[400],
+                border: const OutlineInputBorder(borderSide: BorderSide(color: Color(0xFFD8D8D8))),
                 suffixIcon: IconButton(onPressed:() => (), icon: Icon(Icons.search))),  
               style: TextStyle(fontSize: 16),
             ),
@@ -165,7 +166,9 @@ class _NavigationState extends State<Navigation> {
         preferredSize: const Size.fromHeight(64.0),
         child: _appBars[_selectedIndex],
       ),
-      body: Center(child: _pages[_selectedIndex]),
+      body: Center(
+        child: _pages[_selectedIndex]
+        ),
       bottomNavigationBar: BottomNavigationBar(
           unselectedLabelStyle: const TextStyle(fontSize: 16),
           selectedLabelStyle:
