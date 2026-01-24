@@ -9,56 +9,55 @@ class CustomScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          extendBodyBehindAppBar: true,
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            title: Align(
-              alignment: Alignment.centerRight,
-              child: Text(
-                "Skip",
+        resizeToAvoidBottomInset: false,
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: Align(
+            alignment: Alignment.centerRight,
+            child: Text("Skip",
                 style: GoogleFonts.inter(
                   color: Colors.black,
                   decoration: TextDecoration.underline,
-                )
-                ),
-            ),
+                )),
           ),
-          body: Stack(
-            children: [
-              Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    alignment: Alignment.topCenter,
-                    image: AssetImage("assets/images/login_bg.jpg"),
-                    fit: BoxFit.contain,
-                  ),
-                ),
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    height: 520,
-                    // make width of containerthe same size as the screen
-                    width: double.infinity,
-                    decoration: const BoxDecoration(
-                        borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(8)),
-                        color: Colors.white),
-                    child: child!,
-                  ),
+        ),
+        body: Stack(
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  alignment: Alignment.topCenter,
+                  image: AssetImage("assets/images/login_bg.jpg"),
+                  fit: BoxFit.contain,
                 ),
               ),
-              SafeArea(
-                  child: Padding(
-                      padding: const EdgeInsets.only(top: 54, left: 34),
-                      child: Text(
-                        title!,
-                        style: GoogleFonts.inter(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 52,
-                        ),
-                      )))
-            ],
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  height: 520,
+                  // make width of containerthe same size as the screen
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(8)),
+                      color: Colors.white),
+                  child: child!,
+                ),
+              ),
+            ),
+            SafeArea(
+              child: Padding(
+                  padding: const EdgeInsets.only(top: 54, left: 34),
+                  child: Text(
+                    title!,
+                    style: GoogleFonts.inter(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 52,
+                    ),
+                  )))
+          ],
         ));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_goodcook/screens/navigation.dart';
 import 'package:flutter_goodcook/screens/signup.dart';
 import 'package:flutter_goodcook/widgets/custom_textformfield.dart';
 import 'package:flutter_goodcook/widgets/custom_scaffold.dart';
@@ -40,7 +41,11 @@ class _LoginState extends State<Login> {
                   label: 'Password',
                   hint: 'Enter your Password'),
               FilledButton(
-                onPressed: () => (),
+                onPressed: () => Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => Navigation()),
+                    (Route<dynamic> route) => false),
+                    
                 style: FilledButton.styleFrom(
                   backgroundColor: Colors.black,
                 ),
@@ -52,7 +57,8 @@ class _LoginState extends State<Login> {
                 ),
               ),
               TextButton(
-                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: ((context) => SignUp()))),
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: ((context) => SignUp()))),
                 child: Text(
                   'New to GoodCook? Sign up',
                   textAlign: TextAlign.left,
