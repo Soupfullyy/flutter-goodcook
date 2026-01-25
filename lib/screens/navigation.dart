@@ -105,9 +105,15 @@ class _NavigationState extends State<Navigation> {
             height: 48,
             child: TextField(
               decoration: InputDecoration(
-                fillColor: Colors.grey[400],
-                border: const OutlineInputBorder(borderSide: BorderSide(color: Color(0xFFD8D8D8))),
-                suffixIcon: IconButton(onPressed:() => (), icon: Icon(Icons.search))),  
+                hintText: 'Search for recipes',
+                // to center hint text w/ suffix
+                contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                fillColor: Colors.grey[200],
+                filled: true,
+                enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade100)),
+                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade300)),
+                suffixIcon: IconButton(onPressed:() => (), icon: Icon(Icons.search)),
+                suffixIconColor: Colors.grey),  
               style: TextStyle(fontSize: 16),
             ),
           )
@@ -173,44 +179,45 @@ class _NavigationState extends State<Navigation> {
           unselectedLabelStyle: const TextStyle(fontSize: 16),
           selectedLabelStyle:
               const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-          unselectedItemColor: Color(0xFF252525),
-          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.grey[500],
+          selectedItemColor: Color(0xFF64DC8E),
           // currentIndex: _selectedIndex,
           type: BottomNavigationBarType.fixed,
           onTap: _onItemTapped,
           currentIndex: _selectedIndex,
-          items: const [
+          items: [
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.home_outlined,
-                  color: Colors.black,
+                  color: Colors.grey[500],
                 ),
-                activeIcon: Icon(
+                activeIcon: const Icon(
                   Icons.home,
                 ),
                 label: 'Home'),
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.local_grocery_store_outlined,
-                  color: Colors.black,
+                  color: Colors.grey[500],
                 ),
-                activeIcon: Icon(
+                activeIcon: const Icon(
                   Icons.local_grocery_store,
                 ),
                 label: 'Grocery'),
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.bookmark_border_outlined,
-                  color: Colors.black,
+                  color: Colors.grey[500],
                 ),
-                activeIcon: Icon(
+                activeIcon: const Icon(
                   Icons.bookmark,
                 ),
                 label: 'Recipes'),
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.menu,
-                  color: Colors.black,
+                  Icons.menu_sharp,
+                  // manually set colour, else it wouldn't change
+                  color: _selectedIndex== 3? Color(0xFF64DC8E): Colors.grey[500],
                 ),
                 label: 'Menu'),
           ]),
