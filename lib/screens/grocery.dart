@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/custom_ink.dart';
+
 class GroceryPage extends StatefulWidget {
   const GroceryPage({super.key});
 
@@ -42,14 +44,7 @@ class _GroceryPageState extends State<GroceryPage> {
               height: 8,
               width: 8,
             ),
-            Ink(
-              decoration: const ShapeDecoration(
-                  color: Color(0xFFA5FFC5),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(6)))),
-              child:
-                  IconButton(onPressed: () => (), icon: const Icon(Icons.add)),
-            ),
+            const CustomInk(),
           ],
         ),
         SingleChildScrollView(

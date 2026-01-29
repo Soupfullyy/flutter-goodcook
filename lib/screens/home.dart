@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/custom_ink.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -58,22 +60,14 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           alignment: Alignment.center,
           child: Column(
             children: [
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                  Text(
                     'Home',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
-                  Ink(
-                    decoration: const ShapeDecoration(
-                        color: Color(0xFFA5FFC5),
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(6)))),
-                    child: IconButton(
-                        onPressed: () => (), icon: const Icon(Icons.add)),
-                  ),
+                  CustomInk(),
                 ],
               ),
               Stack(
