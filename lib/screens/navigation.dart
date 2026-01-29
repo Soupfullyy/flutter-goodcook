@@ -16,7 +16,7 @@ class CustomSearchDelegate extends SearchDelegate {
         onPressed: () {
           query = '';
         },
-        icon: Icon(Icons.clear),
+        icon: const Icon(Icons.clear),
       ),
     ];
   }
@@ -28,7 +28,7 @@ class CustomSearchDelegate extends SearchDelegate {
       onPressed: () {
         close(context, null);
       },
-      icon: Icon(Icons.arrow_back),
+      icon: const Icon(Icons.arrow_back),
     );
   }
 
@@ -70,7 +70,7 @@ class CustomSearchDelegate extends SearchDelegate {
 }
 
 class Navigation extends StatefulWidget {
-  Navigation({super.key});
+  const Navigation({super.key});
 
   @override
   State<Navigation> createState() => _NavigationState();
@@ -81,10 +81,10 @@ class _NavigationState extends State<Navigation> {
 
   // A list for all the pages that can be selected in navbar
   final List<Widget> _pages = <Widget>[
-    HomePage(),
-    GroceryPage(),
-    RecipePage(),
-    MenuPage()
+    const HomePage(),
+    const GroceryPage(),
+    const RecipePage(),
+    const MenuPage()
   ];
 
   void _onItemTapped(int index) {
@@ -96,7 +96,7 @@ class _NavigationState extends State<Navigation> {
   @override
   Widget build(BuildContext context) {
     // A list for all the different appbars each selected page will have
-    final List<Widget> _appBars = <Widget>[
+    final List<Widget> appBars = <Widget>[
       AppBar(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           titleSpacing: 16,
@@ -110,7 +110,7 @@ class _NavigationState extends State<Navigation> {
                   hintText: 'Search for recipes',
                   // to center hint text w/ suffix
                   contentPadding:
-                      EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                      const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
                   fillColor: Colors.grey[200],
                   filled: true,
                   enabledBorder: OutlineInputBorder(
@@ -118,9 +118,9 @@ class _NavigationState extends State<Navigation> {
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.grey.shade300)),
                   suffixIcon:
-                      IconButton(onPressed: () => (), icon: Icon(Icons.search)),
+                      IconButton(onPressed: () => (), icon: const Icon(Icons.search)),
                   suffixIconColor: Colors.grey),
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
           )),
       AppBar(
@@ -147,7 +147,7 @@ class _NavigationState extends State<Navigation> {
                   hintText: 'Search for recipes',
                   // to center hint text w/ suffix
                   contentPadding:
-                      EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                      const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
                   fillColor: Colors.grey[200],
                   filled: true,
                   enabledBorder: OutlineInputBorder(
@@ -155,9 +155,9 @@ class _NavigationState extends State<Navigation> {
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.grey.shade300)),
                   suffixIcon:
-                      IconButton(onPressed: () => (), icon: Icon(Icons.search)),
+                      IconButton(onPressed: () => (), icon: const Icon(Icons.search)),
                   suffixIconColor: Colors.grey),
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
           )),
       AppBar(
@@ -178,7 +178,7 @@ class _NavigationState extends State<Navigation> {
       resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(64.0),
-        child: _appBars[_selectedIndex],
+        child: appBars[_selectedIndex],
       ),
       body: Center(child: _pages[_selectedIndex]),
       bottomNavigationBar: BottomNavigationBar(
@@ -186,7 +186,7 @@ class _NavigationState extends State<Navigation> {
           selectedLabelStyle:
               const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           unselectedItemColor: Colors.grey[500],
-          selectedItemColor: Color(0xFF64DC8E),
+          selectedItemColor: const Color(0xFF64DC8E),
           // currentIndex: _selectedIndex,
           type: BottomNavigationBarType.fixed,
           onTap: _onItemTapped,
@@ -224,7 +224,7 @@ class _NavigationState extends State<Navigation> {
                   Icons.menu_sharp,
                   // manually set colour, else it wouldn't change
                   color: _selectedIndex == 3
-                      ? Color(0xFF64DC8E)
+                      ? const Color(0xFF64DC8E)
                       : Colors.grey[500],
                 ),
                 label: 'Menu'),

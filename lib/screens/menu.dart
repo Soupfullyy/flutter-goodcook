@@ -8,7 +8,7 @@ class MenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      Padding(
+      const Padding(
         padding: EdgeInsets.symmetric(vertical: 64),
         child: CircleAvatar(
           backgroundColor: Colors.amber,
@@ -79,7 +79,7 @@ class MenuPage extends StatelessWidget {
                     ),
                     onPressed: () => Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (context) => Login()),
+                        MaterialPageRoute(builder: (context) => const Login()),
                         (Route<dynamic> route) => false),
                     child: Text('Logout',
                         style: GoogleFonts.inter(

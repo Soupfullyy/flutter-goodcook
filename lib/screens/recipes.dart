@@ -67,7 +67,7 @@ class _RecipePageState extends State<RecipePage>
                       img: savedRecipes[index].img,
                       title: savedRecipes[index].title);
                 },
-                separatorBuilder: (context, index) => SizedBox(height: 12,),
+                separatorBuilder: (context, index) => const SizedBox(height: 12,),
               ),
             ),
           ],
@@ -84,18 +84,18 @@ class SmallCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       // constraints: BoxConstraints.tight(Size(200, 200)),
       height: 120,
       child: Card(
         elevation: 6.0,
-        margin: EdgeInsets.all(0.0),
+        margin: const EdgeInsets.all(0.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image(image: AssetImage('assets/images/$img'),fit: BoxFit.cover, height: 120, width: 120,),
-            Text("texts cdppdwpwdpwdpolumn"),
-            Expanded(child: SizedBox()), //this is crucial- this keeps icon always at the end
+            const Text("texts cdppdwpwdpwdpolumn"),
+            const Expanded(child: SizedBox()), //this is crucial- this keeps icon always at the end
 
             // Container(
             //   // constraints: BoxConstraints.tight(const Size.fromHeight(130)),

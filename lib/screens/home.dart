@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 alignment: Alignment.center,
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.only(bottom: 25),
+                    padding: const EdgeInsets.only(bottom: 25),
                     decoration: BoxDecoration(
                       border: Border(
                         bottom:
@@ -92,10 +92,10 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: TabBar(
-                      labelStyle: TextStyle(fontSize: 16),
-                      indicatorColor: Color.fromARGB(255, 116, 255, 204),
+                      labelStyle: const TextStyle(fontSize: 16),
+                      indicatorColor: const Color.fromARGB(255, 116, 255, 204),
                       unselectedLabelColor: Colors.grey,
-                      indicatorPadding: EdgeInsets.only(bottom: 10),
+                      indicatorPadding: const EdgeInsets.only(bottom: 10),
                       controller: tabController,
                       tabs: const [
                         Tab(
@@ -155,7 +155,7 @@ class SmallCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 6.0,
-      margin: EdgeInsets.all(0.0),
+      margin: const EdgeInsets.all(0.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -169,7 +169,7 @@ class SmallCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(title,
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
                 // when recipe name too long, add instead .... so the pixels don't overload
                 overflow: TextOverflow.ellipsis,

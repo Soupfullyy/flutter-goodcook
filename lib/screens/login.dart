@@ -43,7 +43,7 @@ class _LoginState extends State<Login> {
               FilledButton(
                 onPressed: () => Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context) => Navigation()),
+                    MaterialPageRoute(builder: (context) => const Navigation()),
                     (Route<dynamic> route) => false),
                     
                 style: FilledButton.styleFrom(
@@ -58,7 +58,7 @@ class _LoginState extends State<Login> {
               ),
               TextButton(
                 onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: ((context) => SignUp()))),
+                    MaterialPageRoute(builder: ((context) => const SignUp()))),
                 child: Text(
                   'New to GoodCook? Sign up',
                   textAlign: TextAlign.left,

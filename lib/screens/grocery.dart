@@ -25,7 +25,7 @@ class _GroceryPageState extends State<GroceryPage> {
                     hintText: 'Search for recipes',
                     // to center hint text w/ suffix
                     contentPadding:
-                        EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                        const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
                     fillColor: Colors.grey[200],
                     filled: true,
                     enabledBorder: OutlineInputBorder(
@@ -33,12 +33,12 @@ class _GroceryPageState extends State<GroceryPage> {
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.grey.shade300)),
                     suffixIcon: IconButton(
-                        onPressed: () => (), icon: Icon(Icons.search)),
+                        onPressed: () => (), icon: const Icon(Icons.search)),
                     suffixIconColor: Colors.grey),
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
               width: 8,
             ),
@@ -54,11 +54,11 @@ class _GroceryPageState extends State<GroceryPage> {
         ),
         SingleChildScrollView(
           // container to set size of card for grocery list
-          child: Container(
+          child: SizedBox(
             width: MediaQuery.sizeOf(context).width,
             height: 560,
             child: Card(
-              margin: EdgeInsets.all(24),
+              margin: const EdgeInsets.all(24),
               elevation: 8,
               child: Column(
                 children: [
