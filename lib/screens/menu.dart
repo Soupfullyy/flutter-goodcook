@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_goodcook/screens/login.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Menu extends StatelessWidget {
-  const Menu({super.key});
+class MenuPage extends StatelessWidget {
+  const MenuPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_goodcook/screens/menu.dart';
 import 'package:flutter_goodcook/screens/home.dart';
+import 'package:flutter_goodcook/screens/grocery.dart';
+import 'package:flutter_goodcook/screens/recipes.dart';
 
 // custom searchdelegate function for own searches
 class CustomSearchDelegate extends SearchDelegate {
@@ -79,10 +81,10 @@ class _NavigationState extends State<Navigation> {
 
   // A list for all the pages that can be selected in navbar
   final List<Widget> _pages = <Widget>[
-    Home(),
-    const Text('Index 1: Grocery'),
-    const Text('Index 0: Home'),
-    Menu()
+    HomePage(),
+    GroceryPage(),
+    RecipePage(),
+    MenuPage()
   ];
 
   void _onItemTapped(int index) {
@@ -105,55 +107,59 @@ class _NavigationState extends State<Navigation> {
             height: 48,
             child: TextField(
               decoration: InputDecoration(
-                hintText: 'Search for recipes',
-                // to center hint text w/ suffix
-                contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-                fillColor: Colors.grey[200],
-                filled: true,
-                enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade100)),
-                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade300)),
-                suffixIcon: IconButton(onPressed:() => (), icon: Icon(Icons.search)),
-                suffixIconColor: Colors.grey),  
+                  hintText: 'Search for recipes',
+                  // to center hint text w/ suffix
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                  fillColor: Colors.grey[200],
+                  filled: true,
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade100)),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade300)),
+                  suffixIcon:
+                      IconButton(onPressed: () => (), icon: Icon(Icons.search)),
+                  suffixIconColor: Colors.grey),
               style: TextStyle(fontSize: 16),
             ),
-          )
-          //   OutlinedButton.icon(
-          //   onPressed: () {
-          //       // Method to show the search bar
-          //       showSearch(
-          //         context: context,
-
-          //         // Delegate to customize the search bar
-          //         delegate: CustomSearchDelegate(),
-          //       );
-          //     },
-          //   icon: const SizedBox(width: 280,),
-          //   label: const Icon(Icons.search, color: Colors.black,),
-          //   style: OutlinedButton.styleFrom(padding: const EdgeInsets.all(16)),
-          // ),
-
-          // actions: [
-          //   IconButton(
-          //     color: Colors.black,
-          //     onPressed: () {
-          //       // Method to show the search bar
-          //       showSearch(
-          //         context: context,
-
-          //         // Delegate to customize the search bar
-          //         delegate: CustomSearchDelegate(),
-          //       );
-          //     },
-          //     icon: const Icon(Icons.search),
-          //   ),
-          // ],
-          ),
+          )),
       AppBar(
-        title: const Text('Grocery'),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        // shape: const Border(bottom: BorderSide(color: Color(0xFFD8D8D8), width: 1)),
+        titleSpacing: 24,
+        toolbarHeight: 64.0,
+        elevation: 0,
+        title: const Text(
+          'Grocery',
+          style: TextStyle(color: Colors.black),
+        ),
       ),
       AppBar(
-        title: const Text('Grocery'),
-      ),
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          titleSpacing: 16,
+          // to center title vertical, make height same as prefered size's
+          toolbarHeight: 64.0,
+          elevation: 0,
+          title: SizedBox(
+            height: 48,
+            child: TextField(
+              decoration: InputDecoration(
+                  hintText: 'Search for recipes',
+                  // to center hint text w/ suffix
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+                  fillColor: Colors.grey[200],
+                  filled: true,
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade100)),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade300)),
+                  suffixIcon:
+                      IconButton(onPressed: () => (), icon: Icon(Icons.search)),
+                  suffixIconColor: Colors.grey),
+              style: TextStyle(fontSize: 16),
+            ),
+          )),
       AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         // shape: const Border(bottom: BorderSide(color: Color(0xFFD8D8D8), width: 1)),
@@ -168,13 +174,13 @@ class _NavigationState extends State<Navigation> {
     ];
 
     return Scaffold(
+      // prevent overflowing of content due to resizing for keyboard
+      resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(64.0),
         child: _appBars[_selectedIndex],
       ),
-      body: Center(
-        child: _pages[_selectedIndex]
-        ),
+      body: Center(child: _pages[_selectedIndex]),
       bottomNavigationBar: BottomNavigationBar(
           unselectedLabelStyle: const TextStyle(fontSize: 16),
           selectedLabelStyle:
@@ -217,7 +223,9 @@ class _NavigationState extends State<Navigation> {
                 icon: Icon(
                   Icons.menu_sharp,
                   // manually set colour, else it wouldn't change
-                  color: _selectedIndex== 3? Color(0xFF64DC8E): Colors.grey[500],
+                  color: _selectedIndex == 3
+                      ? Color(0xFF64DC8E)
+                      : Colors.grey[500],
                 ),
                 label: 'Menu'),
           ]),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class Recipe{
@@ -28,7 +28,7 @@ List<Recipe> savedRecipes = [
 ];
 
 
-class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
   late TabController tabController;
   int activeTabIndex = 1;
 
