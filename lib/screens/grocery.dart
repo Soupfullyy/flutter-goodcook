@@ -41,7 +41,6 @@ class _GroceryPageState extends State<GroceryPage> {
               ),
             ),
             const SizedBox(
-              height: 8,
               width: 8,
             ),
             const CustomInk(),
@@ -53,7 +52,7 @@ class _GroceryPageState extends State<GroceryPage> {
             width: MediaQuery.sizeOf(context).width,
             height: 560,
             child: Card(
-              margin: const EdgeInsets.all(24),
+              margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               elevation: 8,
               child: Column(
                 children: [
@@ -73,14 +72,6 @@ class _GroceryPageState extends State<GroceryPage> {
                           shrinkWrap: true,
                           itemCount: 40,
                           itemBuilder: (BuildContext context, int index) {
-                            // return Row(
-                            //   children: [
-                            //     Text(
-                            //       'data',
-                            //       style: TextStyle(color: Colors.black),
-                            //     )
-                            //   ],
-                            // );
                             return CheckboxListTile(
                               // to lead with icon, then title
                               controlAffinity: ListTileControlAffinity.leading,
