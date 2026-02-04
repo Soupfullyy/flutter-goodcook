@@ -17,13 +17,13 @@ class MenuPage extends StatelessWidget {
         ),
       ),
       Container(
-        alignment: Alignment.topCenter,
+        alignment: Alignment.bottomCenter,
         color: Colors.grey[40],
         decoration: BoxDecoration(
             border: Border.all(color: const Color(0xFFD8D8D8)),
-            borderRadius: const BorderRadius.all(Radius.circular(16))),
+            borderRadius: const BorderRadius.only(topLeft: Radius.circular(16), topRight: Radius.circular(16)),),
         width: double.infinity,
-        // height: 240,
+        
         child: Padding(
             padding: const EdgeInsets.all(24.0),
             child: Column(

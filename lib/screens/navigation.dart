@@ -3,6 +3,7 @@ import 'package:flutter_goodcook/screens/menu.dart';
 import 'package:flutter_goodcook/screens/home.dart';
 import 'package:flutter_goodcook/screens/grocery.dart';
 import 'package:flutter_goodcook/screens/recipes.dart';
+import 'package:flutter_goodcook/global.dart';
 
 // custom searchdelegate function for own searches
 class CustomSearchDelegate extends SearchDelegate {
@@ -70,7 +71,7 @@ class CustomSearchDelegate extends SearchDelegate {
 }
 
 class Navigation extends StatefulWidget {
-  const Navigation({super.key});
+  Navigation({super.key});
 
   @override
   State<Navigation> createState() => _NavigationState();

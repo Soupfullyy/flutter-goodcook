@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomScaffold extends StatelessWidget {
-  const CustomScaffold({super.key, this.child, this.title});
+  const CustomScaffold({super.key, this.child, this.title, this.height});
   final Widget? child;
   final String? title;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class CustomScaffold extends StatelessWidget {
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                  height: 520,
+                  height: height ?? 520,
                   // make width of containerthe same size as the screen
                   width: double.infinity,
                   decoration: const BoxDecoration(
