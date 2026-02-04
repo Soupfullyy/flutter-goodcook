@@ -25,32 +25,6 @@ class _LoginState extends State<Login> {
 
   final List<String> _listLabel = ['Email Address', 'Password'];
   List<TextEditingController> _controller = [];
-  final List _validators = [
-    (value) {
-      if (value == null || value.isEmpty) {
-        return ' can\'t be empty';
-      }
-      return null;
-    },
-    (value) {
-      if (value == null || value.isEmpty) {
-        return ' can\'t be empty';
-      }
-      return null;
-    },
-    (value) {
-      if (value == null || value.isEmpty) {
-        return ' can\'t be empty';
-      }
-      return null;
-    },
-        (value) {
-      if (value == null || value.isEmpty) {
-        return ' can\'t be empty';
-      }
-      return null;
-    },
-  ];
 
   @override
   void initState() {

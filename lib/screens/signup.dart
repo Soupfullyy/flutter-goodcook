@@ -16,6 +16,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  var confirmPass;
   final _formKey = GlobalKey<FormState>();
   // final nameController = TextEditingController();
   // final emailController = TextEditingController();
@@ -32,6 +33,31 @@ class _SignUpState extends State<SignUp> {
   ];
 
   final List<TextEditingController> _controller = [];
+  //   final List _validators = [
+  //   (value) {
+  //     if (value == null || value.isEmpty) {
+  //       return ' can\'t be empty';
+  //     }
+  //   },
+  //   (value) {
+  //     if (value == null || value.isEmpty) {
+  //       return ' can\'t be empty';
+  //     }
+  //     return null;
+  //   },
+  //   (value) {
+  //     if (value == null || value.isEmpty) {
+  //       return ' can\'t be empty';
+  //     }
+  //     return null;
+  //   },
+  //       (value) {
+  //     if (value == null || value.isEmpty) {
+  //       return ' can\'t be empty';
+  //     }
+  //     return null;
+  //   },
+  // ];
 
   @override
   initState() {
@@ -80,8 +106,18 @@ class _SignUpState extends State<SignUp> {
                       controller: _controller[index],
                       label: _listLabel[index],
                       hint: 'Enter your ${_listLabel[index]}',
-                      validator: (value) =>
-                          value.isEmpty ? '${_listLabel[index]} can\'t be empty' : null,
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return '${_listLabel[index]} can\'t be empty';}
+                        else if (index == 3){
+                          confirmPass = value;
+                        }
+                        else if(index == 4 && value != confirmPass){
+                          return '${_listLabel[index]} does not match';
+                        }
+                        else{
+                          return null;
+                      }}
                     );
                   },
                 ),
