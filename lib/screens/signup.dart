@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_goodcook/global.dart';
-import 'package:flutter_goodcook/screens/home.dart';
 import 'package:flutter_goodcook/screens/login.dart';
 import 'package:flutter_goodcook/widgets/custom_textformfield.dart';
 import 'package:flutter_goodcook/widgets/custom_scaffold.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'navigation.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -16,7 +14,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  var confirmPass;
+  String confirmPass = '';
   final _formKey = GlobalKey<FormState>();
   // final nameController = TextEditingController();
   // final emailController = TextEditingController();
@@ -81,7 +79,7 @@ class _SignUpState extends State<SignUp> {
     // confPwdController.addListener(() {
     //   setState(() {});
     // });
-    CreateControllers(5, _controller);
+    createControllers(5, _controller);
   }
 
   @override
@@ -111,6 +109,7 @@ class _SignUpState extends State<SignUp> {
                           return '${_listLabel[index]} can\'t be empty';}
                         else if (index == 3){
                           confirmPass = value;
+                          return null;
                         }
                         else if(index == 4 && value != confirmPass){
                           return '${_listLabel[index]} does not match';
