@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_goodcook/screens/login.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../global.dart';
+import 'profile.dart';
+
 class MenuPage extends StatelessWidget {
   const MenuPage({super.key});
 
@@ -20,74 +23,105 @@ class MenuPage extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         color: Colors.grey[40],
         decoration: BoxDecoration(
-            border: Border.all(color: const Color(0xFFD8D8D8)),
-            borderRadius: const BorderRadius.only(topLeft: Radius.circular(16), topRight: Radius.circular(16)),),
+          border: Border.all(color: const Color(0xFFD8D8D8)),
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(16), topRight: Radius.circular(16)),
+        ),
         width: double.infinity,
-        
         child: Padding(
             padding: const EdgeInsets.all(24.0),
             child: Column(
               children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 24.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Profile',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      Icon(Icons.chevron_right_outlined)
-                    ],
-                  ),
-                ),
-                const Divider(
-                    height: 4, thickness: 1, color: Color(0xFFD8D8D8)),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 24.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Appearance',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      Icon(Icons.chevron_right_outlined)
-                    ],
-                  ),
-                ),
-                const Divider(
-                    height: 4, thickness: 1, color: Color(0xFFD8D8D8)),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 24.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'About Us',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      Icon(Icons.chevron_right_outlined)
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: MediaQuery.sizeOf(context).width,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                    ),
-                    onPressed: () => Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (context) => const Login()),
-                        (Route<dynamic> route) => false),
-                    child: Text('Logout',
-                        style: GoogleFonts.inter(
-                          fontSize: 16,
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 24.0),
+                  child: ListView(
+                    
+                      shrinkWrap: true,
+                      children: ListTile.divideTiles(context: context, tiles: [
+                        ListTile(
+                          contentPadding: EdgeInsets.all(0),
+                          title: const Text('Profile'),
+                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage())),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.chevron_right_outlined),
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage())),
+                          ),
+                        ),
+                        ListTile(
+                          contentPadding: EdgeInsets.all(0),
+                          title: const Text('Theme'),
+                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage())),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.chevron_right_outlined),
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage())),
+                          ),
+                        ),
+                        ListTile(
+                          contentPadding: EdgeInsets.all(0),
+                          title: const Text('About Us'),
+                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage())),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.chevron_right_outlined),
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage())),
+                          ),
                         )
-                    )
-                  )
-                )
+                      ]).toList()),
+                  //   Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       Text(
+                  //         'Profile',
+                  //         style: TextStyle(fontSize: 16),
+                  //       ),
+                  //       Icon(Icons.chevron_right_outlined)
+                  //     ],
+                  //   ),
+                  // ),
+                  // const Divider(
+                  //     height: 4, thickness: 1, color: Color(0xFFD8D8D8)),
+                  // const Padding(
+                  //   padding: EdgeInsets.symmetric(vertical: 24.0),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       Text(
+                  //         'Appearance',
+                  //         style: TextStyle(fontSize: 16),
+                  //       ),
+                  //       Icon(Icons.chevron_right_outlined)
+                  //     ],
+                  //   ),
+                ),
+                // const Divider(
+                //     height: 4, thickness: 1, color: Color(0xFFD8D8D8)),
+                // const Padding(
+                //   padding: EdgeInsets.symmetric(vertical: 24.0),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //     children: [
+                //       Text(
+                //         'About Us',
+                //         style: TextStyle(fontSize: 16),
+                //       ),
+                //       Icon(Icons.chevron_right_outlined)
+                //     ],
+                //   ),
+                // ),
+                SizedBox(
+                    width: MediaQuery.sizeOf(context).width,
+                    child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                        ),
+                        onPressed: () => Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Login()),
+                            (Route<dynamic> route) => false),
+                        child: Text('Logout',
+                            style: GoogleFonts.inter(
+                              fontSize: 16,
+                            ))))
               ],
             )),
       )
