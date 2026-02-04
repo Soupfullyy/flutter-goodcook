@@ -19,7 +19,7 @@ abstract class Global{
   static List<Widget> pageTitles = [const Text('Home'), const Text('Grocery'), const Text('Recipes'), const Text('Menu')];
 }
 
-void CreateControllers(int number, List<TextEditingController> controllers){
+void createControllers(int number, List<TextEditingController> controllers){
   for (int i = 0; i < number; i++){
     TextEditingController controller = TextEditingController();
     controller.addListener(() { });

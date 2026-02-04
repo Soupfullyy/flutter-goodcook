@@ -1,6 +1,3 @@
-import 'dart:js_interop';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_goodcook/screens/navigation.dart';
 import 'package:flutter_goodcook/screens/signup.dart';
@@ -24,12 +21,12 @@ class _LoginState extends State<Login> {
   // final _pwdController = TextEditingController();
 
   final List<String> _listLabel = ['Email Address', 'Password'];
-  List<TextEditingController> _controller = [];
+  final List<TextEditingController> _controller = [];
 
   @override
   void initState() {
     super.initState();
-    CreateControllers(2, _controller);
+    createControllers(2, _controller);
     // _emailController.addListener(() {});
     // _pwdController.addListener(() {});
   }
@@ -83,7 +80,7 @@ class _LoginState extends State<Login> {
                     if (_formKey.currentState!.validate()) {
                       Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(builder: (context) => Navigation()),
+                          MaterialPageRoute(builder: (context) => const Navigation()),
                           (Route<dynamic> route) => false);
                     }
                   },
