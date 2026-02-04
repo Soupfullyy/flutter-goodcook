@@ -16,108 +16,140 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  final nameController = TextEditingController();
-  final emailController = TextEditingController();
-  final phoneController = TextEditingController();
-  final dobController = TextEditingController();
-  final pwdController = TextEditingController();
-  final confPwdController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  // final nameController = TextEditingController();
+  // final emailController = TextEditingController();
+  // final phoneController = TextEditingController();
+  // final dobController = TextEditingController();
+  // final pwdController = TextEditingController();
+  // final confPwdController = TextEditingController();
+  final List<String> _listLabel = [
+    'Name',
+    'Email',
+    'Phone',
+    'Password',
+    'Confirm Password'
+  ];
+
+  final List<TextEditingController> _controller = [];
 
   @override
-  initState(){
+  initState() {
     super.initState();
-    nameController.addListener(() {
-      setState(() {});
-    });
+    // nameController.addListener(() {
+    //   setState(() {});
+    // });
 
-    emailController.addListener(() {
-      setState(() {});
-    });
+    // emailController.addListener(() {
+    //   setState(() {});
+    // });
 
-    phoneController.addListener(() {
-      setState(() {});
-    });
+    // phoneController.addListener(() {
+    //   setState(() {});
+    // });
 
-    dobController.addListener(() {
-      setState(() {});
-    });
+    // dobController.addListener(() {
+    //   setState(() {});
+    // });
 
-    confPwdController.addListener(() {
-      setState(() {});
-    });
+    // confPwdController.addListener(() {
+    //   setState(() {});
+    // });
+    CreateControllers(5, _controller);
   }
 
-
- @override
+  @override
   Widget build(BuildContext context) {
     return CustomScaffold(
       title: 'Sign Up',
       height: 550,
       child: Padding(
           padding: const EdgeInsets.all(24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              CustomTextFormField(
-                controller: nameController,
-                label: 'Name',
-                hint: 'Enter your Name',
-              ),
-              CustomTextFormField(
-                controller: emailController,
-                label: 'Email Address',
-                hint: 'Enter your Email',
-              ),
-              CustomTextFormField(
-                controller: phoneController,
-                label: 'Phone No.',
-                hint: 'Enter your Phone No.',
-              ),
-              CustomTextFormField(
-                controller: dobController,
-                label: 'Password',
-                hint: 'Enter your Password'
-              ),
-              CustomTextFormField(
-                controller: confPwdController,
-                label: 'Confirm Password',
-                hint: 'Enter your Password'
-              ),
-              FilledButton(
-                onPressed: () 
-                { 
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => Login()),
-                    (Route<dynamic> route) => false);
-
-                    // print(nameController.text);
-                    Global.myProfile = Profile(nameController.text, emailController.text, phoneController.text, dobController.text, pwdController.text);
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                ListView.builder(
+                  // get rid of default padding
+                  padding: const EdgeInsets.all(0),
+                  shrinkWrap: true,
+                  itemCount: _controller.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return CustomTextFormField(
+                      controller: _controller[index],
+                      label: _listLabel[index],
+                      hint: 'Enter your ${_listLabel[index]}',
+                      validator: (value) =>
+                          value.isEmpty ? '${_listLabel[index]} can\'t be empty' : null,
+                    );
                   },
-                    
-                style: FilledButton.styleFrom(
-                  backgroundColor: Colors.black,
                 ),
-                child: Text(
-                  'Sign Up',
-                  style: GoogleFonts.inter(
-                    fontSize: 16,
+                // CustomTextFormField(
+                //   controller: nameController,
+                //   label: 'Name',
+                //   hint: 'Enter your Name',
+                // ),
+                // CustomTextFormField(
+                //   controller: emailController,
+                //   label: 'Email Address',
+                //   hint: 'Enter your Email',
+                // ),
+                // CustomTextFormField(
+                //   controller: phoneController,
+                //   label: 'Phone No.',
+                //   hint: 'Enter your Phone No.',
+                // ),
+                // CustomTextFormField(
+                //   controller: dobController,
+                //   label: 'Password',
+                //   hint: 'Enter your Password'
+                // ),
+                // CustomTextFormField(
+                //   controller: confPwdController,
+                //   label: 'Confirm Password',
+                //   hint: 'Enter your Password'
+                // ),
+                FilledButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Login()),
+                          (Route<dynamic> route) => false);
+          
+                      // print(nameController.text);
+                      Global.myProfile = Profile(
+                          _controller[0].text,
+                          _controller[1].text,
+                          _controller[2].text,
+                          _controller[3].text,);
+                    }
+                  },
+                  style: FilledButton.styleFrom(
+                    backgroundColor: Colors.black,
+                  ),
+                  child: Text(
+                    'Sign Up',
+                    style: GoogleFonts.inter(
+                      fontSize: 16,
+                    ),
                   ),
                 ),
-              ),
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text(
-                  'Have an existing account? Login',
-                  textAlign: TextAlign.left,
-                  style: GoogleFonts.inter(
-                    decoration: TextDecoration.underline,
-                    color: Colors.black,
-                    fontSize: 16,
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: Text(
+                    'Have an existing account? Login',
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.inter(
+                      decoration: TextDecoration.underline,
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           )),
     );
   }

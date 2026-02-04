@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_goodcook/widgets/star.dart';
 
 class CustomTextFormField extends StatefulWidget {
   final TextEditingController controller;
   final String label;
+  final FormFieldValidator validator;
   final String? hint;
   final bool? obscureText;
   const CustomTextFormField(
       {super.key,
       required this.controller,
       required this.label,
+      required this.validator,
       this.hint,
       this.obscureText});
 
@@ -20,11 +23,12 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16),
+        padding: const EdgeInsets.only(top: 6, bottom: 16),
         child: TextFormField(
           obscureText: widget.obscureText ?? false,
           decoration: InputDecoration(
               contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+              errorStyle: const TextStyle(fontSize: 12, height: 0.2),
               labelText: widget.label,
               floatingLabelBehavior: FloatingLabelBehavior.always,
               labelStyle: const TextStyle(
@@ -39,6 +43,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 ),
               )),
           controller: widget.controller,
+          validator: widget.validator
         ));
   }
 }
