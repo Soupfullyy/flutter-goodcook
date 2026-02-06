@@ -3,7 +3,7 @@ import 'package:flutter_goodcook/screens/login.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../global.dart';
-import 'profile.dart';
+import 'myProfile.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({super.key});
@@ -41,28 +41,28 @@ class MenuPage extends StatelessWidget {
                         ListTile(
                           contentPadding: EdgeInsets.all(0),
                           title: const Text('Profile'),
-                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage())),
+                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyProfilePage())),
                           trailing: IconButton(
                             icon: const Icon(Icons.chevron_right_outlined),
-                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage())),
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyProfilePage())),
                           ),
                         ),
                         ListTile(
                           contentPadding: EdgeInsets.all(0),
                           title: const Text('Theme'),
-                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage())),
+                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyProfilePage())),
                           trailing: IconButton(
                             icon: const Icon(Icons.chevron_right_outlined),
-                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage())),
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyProfilePage())),
                           ),
                         ),
                         ListTile(
                           contentPadding: EdgeInsets.all(0),
                           title: const Text('About Us'),
-                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage())),
+                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyProfilePage())),
                           trailing: IconButton(
                             icon: const Icon(Icons.chevron_right_outlined),
-                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage())),
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyProfilePage())),
                           ),
                         )
                       ]).toList()),
