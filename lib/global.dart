@@ -5,9 +5,10 @@ class Profile{
   String? email = '';
   String? phoneNo = '';
   String? passWord = '';
+  String? picture = '';
 
   // Profile({required String name, required String nric, required String dob, required String passWord});
-  Profile( this.name, this.email, this.phoneNo, this.passWord);
+  Profile( this.name, this.email, this.phoneNo, this.passWord, this.picture);
 }
 
 // class wo constructor (just set values )
@@ -22,6 +23,14 @@ abstract class Global{
 void createControllers(int number, List<TextEditingController> controllers){
   for (int i = 0; i < number; i++){
     TextEditingController controller = TextEditingController();
+    controller.addListener(() { });
+    controllers.add(controller);
+  }
+}
+
+void createSetControllers(int number, List<TextEditingController> controllers, text){
+  for (int i = 0; i < number; i++){
+    TextEditingController controller = TextEditingController.fromValue(TextEditingValue(text: text));
     controller.addListener(() { });
     controllers.add(controller);
   }

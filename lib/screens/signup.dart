@@ -158,12 +158,14 @@ class _SignUpState extends State<SignUp> {
                           _controller[0].text,
                           _controller[1].text,
                           _controller[2].text,
-                          _controller[3].text,);
+                          _controller[3].text,
+                          'default');
                     }
                   },
-                  style: FilledButton.styleFrom(
-                    backgroundColor: Colors.black,
-                  ),
+                  // onPressed: () => Navigator.pop(context),
+                  // style: FilledButton.styleFrom(
+                  //   backgroundColor: Colors.black,
+                  // ),
                   child: Text(
                     'Sign Up',
                     style: GoogleFonts.inter(
