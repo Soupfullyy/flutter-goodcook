@@ -60,25 +60,6 @@ class _SignUpState extends State<SignUp> {
   @override
   initState() {
     super.initState();
-    // nameController.addListener(() {
-    //   setState(() {});
-    // });
-
-    // emailController.addListener(() {
-    //   setState(() {});
-    // });
-
-    // phoneController.addListener(() {
-    //   setState(() {});
-    // });
-
-    // dobController.addListener(() {
-    //   setState(() {});
-    // });
-
-    // confPwdController.addListener(() {
-    //   setState(() {});
-    // });
     createControllers(5, _controller);
   }
 
@@ -125,26 +106,7 @@ class _SignUpState extends State<SignUp> {
                 //   label: 'Name',
                 //   hint: 'Enter your Name',
                 // ),
-                // CustomTextFormField(
-                //   controller: emailController,
-                //   label: 'Email Address',
-                //   hint: 'Enter your Email',
-                // ),
-                // CustomTextFormField(
-                //   controller: phoneController,
-                //   label: 'Phone No.',
-                //   hint: 'Enter your Phone No.',
-                // ),
-                // CustomTextFormField(
-                //   controller: dobController,
-                //   label: 'Password',
-                //   hint: 'Enter your Password'
-                // ),
-                // CustomTextFormField(
-                //   controller: confPwdController,
-                //   label: 'Confirm Password',
-                //   hint: 'Enter your Password'
-                // ),
+
                 FilledButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
