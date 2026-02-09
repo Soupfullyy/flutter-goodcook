@@ -43,19 +43,6 @@ class _SignUpState extends State<SignUp> {
   //     }
   //     return null;
   //   },
-  //   (value) {
-  //     if (value == null || value.isEmpty) {
-  //       return ' can\'t be empty';
-  //     }
-  //     return null;
-  //   },
-  //       (value) {
-  //     if (value == null || value.isEmpty) {
-  //       return ' can\'t be empty';
-  //     }
-  //     return null;
-  //   },
-  // ];
 
   @override
   initState() {

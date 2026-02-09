@@ -70,12 +70,15 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     FilledButton(
                       onPressed: () {
                         // if (_formKey.currentState!.validate()) {
-                        Navigator.push(
+                        Navigator.pushNamed(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => const EditProfilePage()
-                            )
-                        );
+                            '/edit_profile'
+                        ).then((_) {
+                          // This block runs when you have returned back to the 1st Page from 2nd.
+                          setState(() {
+                            // Call setState to refresh the page.
+                          });
+                        });
                         // }
                       },
                       style: FilledButton.styleFrom(

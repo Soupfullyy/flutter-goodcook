@@ -12,6 +12,25 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
+  final List<String> _listLabel = [
+    'Name',
+    'Email',
+    'Password',
+  ];
+  final List<String> _listTextEditingVal = [
+    Global.myProfile?.name ?? '',
+    Global.myProfile?.email ?? '',
+    Global.myProfile?.passWord ?? '',
+  ];
+
+  final List<TextEditingController> _controller = [];
+
+  @override
+  initState() {
+    super.initState();
+    createSetControllers(3, _controller, _listTextEditingVal);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,41 +92,57 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       ),
                     ),
                   ),
-                  CustomTextFormField(
-                      controller: TextEditingController.fromValue(
-                          TextEditingValue(text: Global.myProfile?.name ?? '')),
-                      label: 'Name',
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return ' can\'t be empty';
-                        } else {
-                          return null;
-                        }
-                      }),
-                  CustomTextFormField(
-                      controller: TextEditingController.fromValue(
-                          TextEditingValue(
-                              text: Global.myProfile?.email ?? '')),
-                      label: 'Email',
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return ' can\'t be empty';
-                        } else {
-                          return null;
-                        }
-                      }),
-                  CustomTextFormField(
-                      controller: TextEditingController.fromValue(
-                          TextEditingValue(
-                              text: Global.myProfile?.passWord ?? '')),
-                      label: 'Password',
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return ' can\'t be empty';
-                        } else {
-                          return null;
-                        }
-                      }),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: _controller.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return CustomTextFormField(
+                          controller: _controller[index],
+                          label: _listLabel[index],
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return ' can\'t be empty';
+                            } else {
+                              return null;
+                            }
+                          });
+                    },
+                  ),
+                  // CustomTextFormField(
+                  //     controller: TextEditingController.fromValue(
+                  //         TextEditingValue(text: Global.myProfile?.name ?? '')),
+                  //     label: 'Name',
+                  //     validator: (value) {
+                  //       if (value.isEmpty) {
+                  //         return ' can\'t be empty';
+                  //       } else {
+                  //         return null;
+                  //       }
+                  //     }),
+                  // CustomTextFormField(
+                  //     controller: TextEditingController.fromValue(
+                  //         TextEditingValue(
+                  //             text: Global.myProfile?.email ?? '')),
+                  //     label: 'Email',
+                  //     validator: (value) {
+                  //       if (value.isEmpty) {
+                  //         return ' can\'t be empty';
+                  //       } else {
+                  //         return null;
+                  //       }
+                  //     }),
+                  // CustomTextFormField(
+                  //     controller: TextEditingController.fromValue(
+                  //         TextEditingValue(
+                  //             text: Global.myProfile?.passWord ?? '')),
+                  //     label: 'Password',
+                  //     validator: (value) {
+                  //       if (value.isEmpty) {
+                  //         return ' can\'t be empty';
+                  //       } else {
+                  //         return null;
+                  //       }
+                  //     }),
                   // push button to bottom
                   const Expanded(child: SizedBox()),
                 ])),
@@ -117,11 +152,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
         margin: const EdgeInsets.symmetric(horizontal: 32),
         width: double.infinity,
         child: FilledButton(
-          
           onPressed: () {
             // if (_formKey.currentState!.validate()) {
             Navigator.pop(context);
             // }
+            Global.myProfile?.name = _controller[0].text;
+            Global.myProfile?.email = _controller[1].text;
+            Global.myProfile?.passWord = _controller[2].text;
           },
           style: FilledButton.styleFrom(
             backgroundColor: Colors.black,

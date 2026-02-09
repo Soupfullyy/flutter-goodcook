@@ -28,9 +28,9 @@ void createControllers(int number, List<TextEditingController> controllers){
   }
 }
 
-void createSetControllers(int number, List<TextEditingController> controllers, text){
+void createSetControllers(int number, List<TextEditingController> controllers, List<String> listText){
   for (int i = 0; i < number; i++){
-    TextEditingController controller = TextEditingController.fromValue(TextEditingValue(text: text));
+    TextEditingController controller = TextEditingController.fromValue(TextEditingValue(text: listText[i]));
     controller.addListener(() { });
     controllers.add(controller);
   }
