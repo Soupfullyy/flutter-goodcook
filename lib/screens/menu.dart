@@ -3,7 +3,7 @@ import 'package:flutter_goodcook/screens/login.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../global.dart';
-import 'myProfile.dart';
+import 'my_profile.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({super.key});
