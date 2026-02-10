@@ -7,6 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../global.dart';
 
+bool enableTempLogin = true;
+
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -33,6 +35,11 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    if (enableTempLogin) {
+      Global.myProfile = Profile('Tiara', 't@g',
+      '90000000', '123', 'default');
+      print('yes!!');
+    }
     return CustomScaffold(
       title: 'Login',
       child: Padding(
@@ -50,20 +57,19 @@ class _LoginState extends State<Login> {
                   itemCount: _controller.length,
                   itemBuilder: (BuildContext context, int index) {
                     return CustomTextFormField(
-                      controller: _controller[index],
-                      label: _listLabel[index],
-                      hint: 'Enter your ${_listLabel[index]}',
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return '${_listLabel[index]} can\'t be empty';
-                      }
-                      else if (index == 0 && value != Global.myProfile?.email){
-                        return '${_listLabel[index]} does not exist';
-                      }
-                      else{
-                        return null;
-                      }}
-                    );
+                        controller: _controller[index],
+                        label: _listLabel[index],
+                        hint: 'Enter your ${_listLabel[index]}',
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return '${_listLabel[index]} can\'t be empty';
+                          } else if (index == 0 &&
+                              value != Global.myProfile?.email) {
+                            return '${_listLabel[index]} does not exist';
+                          } else {
+                            return null;
+                          }
+                        });
                   },
                 ),
                 // CustomTextFormField(
@@ -80,7 +86,8 @@ class _LoginState extends State<Login> {
                     if (_formKey.currentState!.validate()) {
                       Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(builder: (context) => const Navigation()),
+                          MaterialPageRoute(
+                              builder: (context) => const Navigation()),
                           (Route<dynamic> route) => false);
                     }
                   },
