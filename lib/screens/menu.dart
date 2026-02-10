@@ -14,8 +14,8 @@ class MenuPage extends StatelessWidget {
       const Padding(
         padding: EdgeInsets.symmetric(vertical: 64),
         child: CircleAvatar(
-          backgroundColor: Colors.amber,
-          backgroundImage: AssetImage('assets/images/brown_chicken_rice.jpg'),
+          backgroundColor: Colors.transparent,
+          backgroundImage: AssetImage('assets/images/good_cook_logo.png'),
           maxRadius: 64,
         ),
       ),

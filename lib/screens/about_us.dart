@@ -25,7 +25,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
           toolbarHeight: 64.0,
           elevation: 0,
           title: const Text(
-            'About Me',
+            'About Us',
             style: TextStyle(color: Colors.black),
           ),
         ),
@@ -41,10 +41,11 @@ class _AboutUsPageState extends State<AboutUsPage> {
                       alignment: Alignment.topCenter,
                       height: 180,
                       width: double.infinity,
-                      child: Center(
+                      child: const Center(
                         child: CircleAvatar(
-                          radius: 64,
-                          backgroundColor: Colors.grey[200],
+                          backgroundColor: Colors.transparent,
+                          backgroundImage: AssetImage('assets/images/good_cook_logo.png'),
+                          maxRadius: 64,
                         ),
                       ),
                     ),
@@ -91,7 +92,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
                                         email,
                                         style: const TextStyle(fontSize: 18),
                                       ),
-                                      style: TextButton.styleFrom(padding: EdgeInsets.symmetric(horizontal: 0)),
+                                      style: TextButton.styleFrom(padding: const EdgeInsets.symmetric(horizontal: 0)),
                                       onPressed: () {
                                         launchEmail();
                                         // _openLink(Uri(scheme: 'https', host: 'www.google.com'));
@@ -117,7 +118,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
                   ])),
         ));
   }
-  
+
   Future<void> launchEmail() async {
     // final String email = Uri.encodeComponent("test@gmail.com");
     final Uri params = Uri(
