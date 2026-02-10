@@ -108,41 +108,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           });
                     },
                   ),
-                  // CustomTextFormField(
-                  //     controller: TextEditingController.fromValue(
-                  //         TextEditingValue(text: Global.myProfile?.name ?? '')),
-                  //     label: 'Name',
-                  //     validator: (value) {
-                  //       if (value.isEmpty) {
-                  //         return ' can\'t be empty';
-                  //       } else {
-                  //         return null;
-                  //       }
-                  //     }),
-                  // CustomTextFormField(
-                  //     controller: TextEditingController.fromValue(
-                  //         TextEditingValue(
-                  //             text: Global.myProfile?.email ?? '')),
-                  //     label: 'Email',
-                  //     validator: (value) {
-                  //       if (value.isEmpty) {
-                  //         return ' can\'t be empty';
-                  //       } else {
-                  //         return null;
-                  //       }
-                  //     }),
-                  // CustomTextFormField(
-                  //     controller: TextEditingController.fromValue(
-                  //         TextEditingValue(
-                  //             text: Global.myProfile?.passWord ?? '')),
-                  //     label: 'Password',
-                  //     validator: (value) {
-                  //       if (value.isEmpty) {
-                  //         return ' can\'t be empty';
-                  //       } else {
-                  //         return null;
-                  //       }
-                  //     }),
                   // push button to bottom
                   const Expanded(child: SizedBox()),
                 ])),

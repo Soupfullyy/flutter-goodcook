@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 children: [
                   Text(
                     'Home',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   CustomInk(),
                 ],
@@ -155,7 +155,7 @@ class SmallCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            constraints: BoxConstraints.tight(const Size.fromHeight(130)),
+            constraints: BoxConstraints.tight(const Size.fromHeight(118)),
             child: Image.asset(
               'assets/images/$img',
               fit: BoxFit.cover,

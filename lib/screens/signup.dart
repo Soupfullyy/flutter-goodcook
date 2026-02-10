@@ -121,6 +121,9 @@ class _SignUpState extends State<SignUp> {
                       fontSize: 16,
                     ),
                   ),
+                  style: FilledButton.styleFrom(
+                    backgroundColor: Colors.black
+                  ),
                 ),
                 TextButton(
                   onPressed: () => Navigator.pop(context),
