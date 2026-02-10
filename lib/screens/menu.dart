@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_goodcook/screens/about_us.dart';
 import 'package:flutter_goodcook/screens/login.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../global.dart';
 import 'my_profile.dart';
 
 class MenuPage extends StatelessWidget {
@@ -35,78 +35,37 @@ class MenuPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 24.0),
                   child: ListView(
-                    
                       shrinkWrap: true,
                       children: ListTile.divideTiles(context: context, tiles: [
                         ListTile(
-                          contentPadding: EdgeInsets.all(0),
+                          contentPadding: const EdgeInsets.all(0),
                           title: const Text('Profile'),
-                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyProfilePage())),
-                          trailing: IconButton(
-                            icon: const Icon(Icons.chevron_right_outlined),
-                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyProfilePage())),
-                          ),
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const MyProfilePage())),
+                          trailing: const Icon(Icons.chevron_right_outlined),
                         ),
                         ListTile(
-                          contentPadding: EdgeInsets.all(0),
+                          contentPadding: const EdgeInsets.all(0),
                           title: const Text('Theme'),
-                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyProfilePage())),
-                          trailing: IconButton(
-                            icon: const Icon(Icons.chevron_right_outlined),
-                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyProfilePage())),
-                          ),
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const MyProfilePage())),
+                          trailing: const Icon(Icons.chevron_right_outlined),
                         ),
                         ListTile(
-                          contentPadding: EdgeInsets.all(0),
+                          contentPadding: const EdgeInsets.all(0),
                           title: const Text('About Us'),
-                          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyProfilePage())),
-                          trailing: IconButton(
-                            icon: const Icon(Icons.chevron_right_outlined),
-                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyProfilePage())),
-                          ),
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const AboutUsPage())),
+                          trailing: const Icon(Icons.chevron_right_outlined),
                         )
                       ]).toList()),
-                  //   Row(
-                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //     children: [
-                  //       Text(
-                  //         'Profile',
-                  //         style: TextStyle(fontSize: 16),
-                  //       ),
-                  //       Icon(Icons.chevron_right_outlined)
-                  //     ],
-                  //   ),
-                  // ),
-                  // const Divider(
-                  //     height: 4, thickness: 1, color: Color(0xFFD8D8D8)),
-                  // const Padding(
-                  //   padding: EdgeInsets.symmetric(vertical: 24.0),
-                  //   child: Row(
-                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //     children: [
-                  //       Text(
-                  //         'Appearance',
-                  //         style: TextStyle(fontSize: 16),
-                  //       ),
-                  //       Icon(Icons.chevron_right_outlined)
-                  //     ],
-                  //   ),
                 ),
-                // const Divider(
-                //     height: 4, thickness: 1, color: Color(0xFFD8D8D8)),
-                // const Padding(
-                //   padding: EdgeInsets.symmetric(vertical: 24.0),
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children: [
-                //       Text(
-                //         'About Us',
-                //         style: TextStyle(fontSize: 16),
-                //       ),
-                //       Icon(Icons.chevron_right_outlined)
-                //     ],
-                //   ),
-                // ),
                 SizedBox(
                     width: MediaQuery.sizeOf(context).width,
                     child: ElevatedButton(

@@ -12,7 +12,7 @@ class MyProfilePage extends StatefulWidget {
 class _MyProfilePageState extends State<MyProfilePage> {
   @override
   Widget build(BuildContext context) {
-    const titleTextStyle = TextStyle(fontSize: 20, fontWeight: FontWeight.w500);
+    const titleTextStyle = TextStyle(fontSize: 18, fontWeight: FontWeight.w500);
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -58,9 +58,9 @@ class _MyProfilePageState extends State<MyProfilePage> {
                         ),
                       ),
                     ),
-                    ListTile(title: const Text( 'Name', style: titleTextStyle,), subtitle: Text( Global.myProfile?.name ?? '', style: TextStyle(fontSize: 18),),),
-                    ListTile(title: const Text( 'Email', style: titleTextStyle,), subtitle: Text( Global.myProfile?.email ?? '', style: TextStyle(fontSize: 18),)),
-                    ListTile(title: const Text( 'Password', style: titleTextStyle,), subtitle: Text( Global.myProfile?.passWord ?? '', style: TextStyle(fontSize: 18),)),
+                    ListTile(title: const Text( 'Name', style: titleTextStyle), subtitle: Text( Global.myProfile?.name ?? '', style: const TextStyle(fontSize: 18),),),
+                    ListTile(title: const Text( 'Email', style: titleTextStyle,), subtitle: Text( Global.myProfile?.email ?? '', style: const TextStyle(fontSize: 18),)),
+                    ListTile(title: const Text( 'Password', style: titleTextStyle,), subtitle: Text( Global.myProfile?.passWord ?? '', style: const TextStyle(fontSize: 18),)),
                     // push button to bottom
                     const Expanded(child: SizedBox()),
                     FilledButton(
