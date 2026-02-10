@@ -3,6 +3,7 @@ import 'package:flutter_goodcook/screens/menu.dart';
 import 'package:flutter_goodcook/screens/home.dart';
 import 'package:flutter_goodcook/screens/grocery.dart';
 import 'package:flutter_goodcook/screens/recipes.dart';
+import 'package:flutter_goodcook/screens/search_recipes.dart';
 
 // custom searchdelegate function for own searches
 class CustomSearchDelegate extends SearchDelegate {
@@ -97,6 +98,7 @@ class _NavigationState extends State<Navigation> {
   Widget build(BuildContext context) {
     // A list for all the different appbars each selected page will have
     final List<Widget> appBars = <Widget>[
+      // for home page
       AppBar(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           titleSpacing: 16,
@@ -118,11 +120,15 @@ class _NavigationState extends State<Navigation> {
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.grey.shade300)),
                   suffixIcon:
-                      IconButton(onPressed: () => (), icon: const Icon(Icons.search)),
+                    IconButton(
+                      onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SearchRecipesPage())),
+                      icon: const Icon(Icons.search)
+                    ),
                   suffixIconColor: Colors.grey),
               style: const TextStyle(fontSize: 16),
             ),
           )),
+      // for grocery
       AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         // shape: const Border(bottom: BorderSide(color: Color(0xFFD8D8D8), width: 1)),
@@ -131,9 +137,10 @@ class _NavigationState extends State<Navigation> {
         elevation: 0,
         title: const Text(
           'Grocery',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(fontSize: 22, color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
+      // for saved recipes
       AppBar(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           titleSpacing: 16,
@@ -160,6 +167,7 @@ class _NavigationState extends State<Navigation> {
               style: const TextStyle(fontSize: 16),
             ),
           )),
+      // for menu
       AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         // shape: const Border(bottom: BorderSide(color: Color(0xFFD8D8D8), width: 1)),
