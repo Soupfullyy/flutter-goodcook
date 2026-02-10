@@ -30,26 +30,29 @@ class LargeCard extends StatelessWidget {
               const SizedBox(width: 16, height: 16),
               // to wrap long text based on cross-axis
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Flexible(
-                        child: Text(
-                      title,
-                      style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          overflow: TextOverflow.visible),
-                      maxLines: 2,
-                    )),
-                    const StarRating(
-                      onRatingChanged: null,
-                    ),
-                    const Row(
-                      children: [Icon(Icons.access_time), Text('1hr 30mins')],
-                    )
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                          child: Text(
+                        title,
+                        style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            overflow: TextOverflow.visible),
+                        maxLines: 2,
+                      )),
+                      const StarRating(
+                        onRatingChanged: null,
+                      ),
+                      const Row(
+                        children: [Icon(Icons.access_time), Text('1hr 30mins')],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],

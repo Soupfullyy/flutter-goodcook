@@ -176,7 +176,7 @@ class _NavigationState extends State<Navigation> {
         elevation: 0,
         title: const Text(
           'Menu',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
     ];
