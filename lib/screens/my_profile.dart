@@ -1,10 +1,6 @@
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_goodcook/global.dart';
-import 'package:flutter_goodcook/widgets/custom_textformfield.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'edit_profile.dart';
 
 class MyProfilePage extends StatefulWidget {
   const MyProfilePage({super.key});
