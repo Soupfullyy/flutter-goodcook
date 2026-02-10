@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_goodcook/global.dart';
 
-import '../widgets/card.dart';
-import '../widgets/custom_ink.dart';
+import '../widgets/large_card.dart';
 
 class SearchRecipesPage extends StatefulWidget {
   const SearchRecipesPage({super.key});
