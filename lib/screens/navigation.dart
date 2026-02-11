@@ -6,12 +6,11 @@ import 'package:flutter_goodcook/screens/recipes.dart';
 import 'package:flutter_goodcook/screens/search_recipes.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-// class MyTabItem {
-//   String title;
-//   IconData icon;
-
-//   MyTabItem(this.title, this.icon);
-// }
+extension StringExtension on String {
+    String capitalize() {
+      return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
+    }
+}
 
 // custom searchdelegate function for own searches
 class CustomSearchDelegate extends SearchDelegate {
@@ -121,7 +120,7 @@ class _NavigationState extends State<Navigation> {
                   const ColorFilter.mode(Color(0xFF64DC8E), BlendMode.srcIn),
                   
             ),
-            label: item,
+            label: item.capitalize(),
           ),
         )
         .toList();
