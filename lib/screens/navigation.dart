@@ -4,6 +4,14 @@ import 'package:flutter_goodcook/screens/home.dart';
 import 'package:flutter_goodcook/screens/grocery.dart';
 import 'package:flutter_goodcook/screens/recipes.dart';
 import 'package:flutter_goodcook/screens/search_recipes.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+// class MyTabItem {
+//   String title;
+//   IconData icon;
+
+//   MyTabItem(this.title, this.icon);
+// }
 
 // custom searchdelegate function for own searches
 class CustomSearchDelegate extends SearchDelegate {
@@ -79,7 +87,7 @@ class Navigation extends StatefulWidget {
 
 class _NavigationState extends State<Navigation> {
   int _selectedIndex = 0;
-
+  final List<String> _iconNames = ['home', 'grocery', 'recipes', 'menu'];
   // A list for all the pages that can be selected in navbar
   final List<Widget> _pages = <Widget>[
     const HomePage(),
@@ -92,6 +100,31 @@ class _NavigationState extends State<Navigation> {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  List<BottomNavigationBarItem> getBottomTabs(List<String> tabs) {
+    return tabs
+        .map(
+          (item) => BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/images/icon_$item.svg',
+              width: 24,
+              height: 24,
+              colorFilter:
+                  ColorFilter.mode(Colors.grey.shade500, BlendMode.srcIn),
+            ),
+            activeIcon: SvgPicture.asset(
+              'assets/images/icon_${item}_active.svg',
+              width: 24,
+              height: 24,
+              colorFilter:
+                  const ColorFilter.mode(Color(0xFF64DC8E), BlendMode.srcIn),
+                  
+            ),
+            label: item,
+          ),
+        )
+        .toList();
   }
 
   @override
@@ -119,11 +152,12 @@ class _NavigationState extends State<Navigation> {
                       borderSide: BorderSide(color: Colors.grey.shade100)),
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.grey.shade300)),
-                  suffixIcon:
-                    IconButton(
-                      onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SearchRecipesPage())),
-                      icon: const Icon(Icons.search)
-                    ),
+                  suffixIcon: IconButton(
+                      onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SearchRecipesPage())),
+                      icon: const Icon(Icons.search)),
                   suffixIconColor: Colors.grey),
               style: const TextStyle(fontSize: 16),
             ),
@@ -137,7 +171,8 @@ class _NavigationState extends State<Navigation> {
         elevation: 0,
         title: const Text(
           'Grocery',
-          style: TextStyle(fontSize: 22, color: Colors.black, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: 22, color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
       // for saved recipes
@@ -161,8 +196,8 @@ class _NavigationState extends State<Navigation> {
                       borderSide: BorderSide(color: Colors.grey.shade100)),
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.grey.shade300)),
-                  suffixIcon:
-                      IconButton(onPressed: () => (), icon: const Icon(Icons.search)),
+                  suffixIcon: IconButton(
+                      onPressed: () => (), icon: const Icon(Icons.search)),
                   suffixIconColor: Colors.grey),
               style: const TextStyle(fontSize: 16),
             ),
@@ -182,61 +217,67 @@ class _NavigationState extends State<Navigation> {
     ];
 
     return Scaffold(
-      // prevent overflowing of content due to resizing for keyboard
-      resizeToAvoidBottomInset: false,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(64.0),
-        child: appBars[_selectedIndex],
-      ),
-      body: Center(child: _pages[_selectedIndex]),
-      bottomNavigationBar: BottomNavigationBar(
-          unselectedLabelStyle: const TextStyle(fontSize: 16),
-          selectedLabelStyle:
-              const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-          unselectedItemColor: Colors.grey[500],
-          selectedItemColor: const Color(0xFF64DC8E),
-          // currentIndex: _selectedIndex,
-          type: BottomNavigationBarType.fixed,
-          onTap: _onItemTapped,
-          currentIndex: _selectedIndex,
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home_outlined,
-                  color: Colors.grey[500],
-                ),
-                activeIcon: const Icon(
-                  Icons.home,
-                ),
-                label: 'Home'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.local_grocery_store_outlined,
-                  color: Colors.grey[500],
-                ),
-                activeIcon: const Icon(
-                  Icons.local_grocery_store,
-                ),
-                label: 'Grocery'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.bookmark_border_outlined,
-                  color: Colors.grey[500],
-                ),
-                activeIcon: const Icon(
-                  Icons.bookmark,
-                ),
-                label: 'Recipes'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.menu_sharp,
-                  // manually set colour, else it wouldn't change
-                  color: _selectedIndex == 3
-                      ? const Color(0xFF64DC8E)
-                      : Colors.grey[500],
-                ),
-                label: 'Menu'),
-          ]),
-    );
+        // prevent overflowing of content due to resizing for keyboard
+        resizeToAvoidBottomInset: false,
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(64.0),
+          child: appBars[_selectedIndex],
+        ),
+        body: Center(child: _pages[_selectedIndex]),
+        bottomNavigationBar: BottomNavigationBar(
+            unselectedLabelStyle: const TextStyle(fontSize: 16),
+            selectedLabelStyle:
+                const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            unselectedItemColor: Colors.grey[500],
+            selectedItemColor: const Color(0xFF64DC8E),
+            // currentIndex: _selectedIndex,
+            type: BottomNavigationBarType.fixed,
+            onTap: _onItemTapped,
+            currentIndex: _selectedIndex,
+            items: getBottomTabs(_iconNames)
+            // BottomNavigationBarItem(
+            //     icon: Icon(
+            //       Icons.home_outlined,
+            //       color: Colors.grey[500],
+            //     ),
+            //     activeIcon: const Icon(
+            //       Icons.home,
+            //     ),
+            //     label: 'Home'),
+            // BottomNavigationBarItem(
+            //     icon: SvgPicture.asset(
+            //       'assets/images/icon_grocery.svg',
+            //       width: 24,
+            //       height: 24,
+            //       colorFilter:
+            //           ColorFilter.mode(Colors.grey.shade500, BlendMode.srcIn),
+            //     ),
+            //     activeIcon: SvgPicture.asset(
+            //       'assets/images/icon_cart_filled.svg',
+            //       width: 24,
+            //       height: 24,
+            //       colorFilter: const ColorFilter.mode(
+            //           Color(0xFF64DC8E), BlendMode.srcIn),
+            //     ),
+            //     label: 'Grocery'),
+            // BottomNavigationBarItem(
+            //     icon: Icon(
+            //       Icons.bookmark_border_outlined,
+            //       color: Colors.grey[500],
+            //     ),
+            //     activeIcon: const Icon(
+            //       Icons.bookmark,
+            //     ),
+            //     label: 'Recipes'),
+            // BottomNavigationBarItem(
+            //     icon: Icon(
+            //       Icons.menu_sharp,
+            //       // manually set colour, else it wouldn't change
+            //       color: _selectedIndex == 3
+            //           ? const Color(0xFF64DC8E)
+            //           : Colors.grey[500],
+            //     ),
+            //     label: 'Menu'),
+            ));
   }
 }

@@ -38,7 +38,6 @@ class _LoginState extends State<Login> {
     if (enableTempLogin) {
       Global.myProfile = Profile('Tiara', 't@g',
       '90000000', '123', 'default');
-      print('yes!!');
     }
     return CustomScaffold(
       title: 'Login',
@@ -66,6 +65,9 @@ class _LoginState extends State<Login> {
                           } else if (index == 0 &&
                               value != Global.myProfile?.email) {
                             return '${_listLabel[index]} does not exist';
+                          } else if (index == 1 &&
+                              value != Global.myProfile?.passWord) {
+                            return '${_listLabel[index]} is incorrect';
                           } else {
                             return null;
                           }
