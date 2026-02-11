@@ -3,77 +3,14 @@ import 'package:flutter_goodcook/screens/menu.dart';
 import 'package:flutter_goodcook/screens/home.dart';
 import 'package:flutter_goodcook/screens/grocery.dart';
 import 'package:flutter_goodcook/screens/recipes.dart';
-import 'package:flutter_goodcook/screens/search_recipes.dart';
+// import 'package:flutter_goodcook/screens/search_recipes.dart';
+import 'package:flutter_goodcook/global.dart' as g;
+import 'package:flutter_goodcook/widgets/large_card.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 extension StringExtension on String {
-    String capitalize() {
-      return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
-    }
-}
-
-// custom searchdelegate function for own searches
-class CustomSearchDelegate extends SearchDelegate {
-  List<String> searchTerms = ['Chicken Biryani'];
-
-  // For clearing text
-  @override
-  List<Widget>? buildActions(BuildContext context) {
-    return [
-      IconButton(
-        onPressed: () {
-          query = '';
-        },
-        icon: const Icon(Icons.clear),
-      ),
-    ];
-  }
-
-  // For search pop out menu
-  @override
-  Widget? buildLeading(BuildContext context) {
-    return IconButton(
-      onPressed: () {
-        close(context, null);
-      },
-      icon: const Icon(Icons.arrow_back),
-    );
-  }
-
-  // for query result
-  @override
-  Widget buildResults(BuildContext context) {
-    List<String> matchQuery = [];
-    for (var fruit in searchTerms) {
-      if (fruit.toLowerCase().contains(query.toLowerCase())) {
-        matchQuery.add(fruit);
-      }
-    }
-    return ListView.builder(
-      itemCount: matchQuery.length,
-      itemBuilder: (context, index) {
-        var result = matchQuery[index];
-        return ListTile(title: Text(result));
-      },
-    );
-  }
-
-  // For showing query
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    List<String> matchQuery = [];
-    for (var fruit in searchTerms) {
-      if (fruit.toLowerCase().contains(query.toLowerCase())) {
-        matchQuery.add(fruit);
-      }
-    }
-    return ListView.builder(
-      itemCount: matchQuery.length,
-      itemBuilder: (context, index) {
-        var result = matchQuery[index];
-        return ListTile(title: Text(result));
-      },
-    );
+  String capitalize() {
+    return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
   }
 }
 
@@ -118,7 +55,6 @@ class _NavigationState extends State<Navigation> {
               height: 24,
               colorFilter:
                   const ColorFilter.mode(Color(0xFF64DC8E), BlendMode.srcIn),
-                  
             ),
             label: item.capitalize(),
           ),
@@ -140,24 +76,14 @@ class _NavigationState extends State<Navigation> {
           title: SizedBox(
             height: 48,
             child: TextField(
-              decoration: InputDecoration(
-                  hintText: 'Search for recipes',
-                  // to center hint text w/ suffix
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-                  fillColor: Colors.grey[200],
-                  filled: true,
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade100)),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade300)),
-                  suffixIcon: IconButton(
-                      onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SearchRecipesPage())),
-                      icon: const Icon(Icons.search)),
-                  suffixIconColor: Colors.grey),
+              // when user taps on search bar, it'll open all search queries
+              onTap: () async {
+                await showSearch(
+                  context: context,
+                  delegate: CustomSearchDelegate(),
+                );
+              },
+              decoration: searchInputDecoration(),
               style: const TextStyle(fontSize: 16),
             ),
           )),
@@ -278,5 +204,181 @@ class _NavigationState extends State<Navigation> {
             //     ),
             //     label: 'Menu'),
             ));
+  }
+
+  InputDecoration searchInputDecoration() {
+    return InputDecoration(
+        hintText: 'Search for recipes',
+        // to center hint text w/ suffix
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+        fillColor: Colors.grey[200],
+        filled: true,
+        enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey.shade100)),
+        focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey.shade300)),
+        suffixIcon: const Icon(
+            // onPressed: () async {
+            //   await showSearch(
+            //     context: context,
+            //     delegate: CustomSearchDelegate(),
+            //   );
+            // },
+
+            // () => Navigator.push(
+            //     context,
+            //     MaterialPageRoute(
+            //         builder: (context) => SearchRecipesPage())),
+            // icon:
+            (Icons.search)),
+        suffixIconColor: Colors.grey);
+  }
+}
+
+class CustomSearchDelegate extends SearchDelegate {
+  List<g.Recipe> searchTerms = g.Global.recipes;
+
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    return ThemeData(
+        appBarTheme: AppBarTheme(
+          backgroundColor: Theme.of(context).canvasColor,
+          iconTheme: IconThemeData(color: Colors.black),
+          elevation: 0,
+          titleSpacing: 0,
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+            // to center hint text w/ suffix
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+            fillColor: Colors.grey[200],
+            filled: true,
+            enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey.shade100)),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey.shade300)),
+            suffixIconColor: Colors.grey));
+  }
+
+  // For clearing text
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      IconButton(
+        onPressed: () {
+          query = '';
+        },
+        icon: const Icon(Icons.clear),
+      ),
+    ];
+  }
+
+  // For search pop out menu
+  @override
+  Widget? buildLeading(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        close(context, null);
+      },
+      icon: const Icon(Icons.chevron_left),
+    );
+  }
+
+  // for query result
+  @override
+  Widget buildResults(BuildContext context) {
+    //if recipe matches what user searches, add to matchQUery for showing
+    List<g.Recipe> matchQuery = [];
+    for (var recipe in searchTerms) {
+      if (recipe.title.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(recipe);
+      }
+    }
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Padding(
+        padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
+        child: Text(
+          'All recipes matching $query',
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.fromLTRB(24, 0, 24, 12),
+        child: ElevatedButton.icon(
+          onPressed: () => (),
+          icon: const Icon(Icons.filter_alt),
+          label: const Text('Filter'),
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+        ),
+      ),
+      Expanded(
+          child: SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(24, 0, 24, 12),
+              child: ListView.separated(
+                // to place listview in scrollview without content's height taking up all the space
+                shrinkWrap: true,
+                primary: false,
+                physics: const NeverScrollableScrollPhysics(),
+                clipBehavior: Clip.none,
+                itemCount: matchQuery.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return LargeCard(
+                      img: matchQuery[index].img,
+                      title: matchQuery[index].title);
+                },
+                separatorBuilder: (context, index) => const SizedBox(
+                  height: 12,
+                ),
+              )))
+    ]);
+  }
+
+  // For showing query
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    List<g.Recipe> matchQuery = [];
+    for (var recipe in searchTerms) {
+      if (recipe.title.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(recipe);
+      }
+    }
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      const Padding(
+        padding: EdgeInsets.fromLTRB(24, 0, 24, 0),
+        child: Text(
+          'All recipes matching ',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.fromLTRB(24, 0, 24, 12),
+        child: ElevatedButton.icon(
+          onPressed: () => (),
+          icon: const Icon(Icons.filter_alt),
+          label: const Text('Filter'),
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+        ),
+      ),
+      Expanded(
+          child: SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(24, 0, 24, 12),
+              child: ListView.separated(
+                // to place listview in scrollview without content's height taking up all the space
+                shrinkWrap: true,
+                primary: false,
+                physics: const NeverScrollableScrollPhysics(),
+                clipBehavior: Clip.none,
+                itemCount: matchQuery.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return LargeCard(
+                      img: matchQuery[index].img,
+                      title: matchQuery[index].title);
+                },
+                separatorBuilder: (context, index) => const SizedBox(
+                  height: 12,
+                ),
+              )))
+    ]);
   }
 }
